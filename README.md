@@ -40,6 +40,8 @@ cd Jack35Demo
 
 #Add the android platform to your cordova app
 cordova platform add android@6.4.0
+#For iOS
+# cordova platform add ios@4.5.5
 
 #Add the previously created plugin
 cordova plugin add ../Jack35Plugin
@@ -51,5 +53,13 @@ cordova build
 At the end you should have a sample application with your plugin inside.
 To debug and check how everything is connected, open, in this case, Android Studio in the android project folder (inside the created app, in ```platforms/android```)
 
-Similarly, if you are developing an ios plugin and ios application, everything above applies, replacing the **_android_** keyword by _**ios**_. The version for cordova-ios platform should be 4.5.5.
+You can also test your application imediatly, having a device or android emulator connected, by running the command:
+
+```cordova run android ```
+
+#### iOS
+
+Similarly, if you are developing an ios plugin and ios application, everything above applies, replacing the **_android_** keyword by _**ios**_.
+ 
+ The version for cordova-ios platform should be 4.5.5. You should open the **.xcworkspace** file (inside the created app, in ```platforms/ios```) with the Xcode app to see the application code.
 
