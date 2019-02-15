@@ -1,0 +1,25 @@
+{
+  "name": "com.outsystems.experts.plugins.jack35",
+  "version": "0.0.1",
+  "description": "Sample Cordova plugin to demonstrate Integration with Outsystems platform",
+  "cordova": {
+    "id": "com.outsystems.experts.plugins.jack35",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OutSystemsExperts/com.outsystems.experts.plugins.jack35.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Carlos Sotelo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OutSystemsExperts/com.outsystems.experts.plugins.jack35/issues"
+  },
+  "homepage": "https://github.com/OutSystemsExperts/com.outsystems.experts.plugins.jack35#readme"
+}
