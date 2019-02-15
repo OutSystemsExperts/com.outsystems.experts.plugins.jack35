@@ -36,14 +36,18 @@ Methods:
     * This method sets the listener function for when the jack 3.5 connection is plugged or unplugged. The success function receives this feedback overtime. It receives as parameter a boolean defining if the unplug event should throw a notification or not.
     ```javascript
         cordova.plugins.Jack35Plugin.startListening(true,
-              function(){console.log("Volume changed")},
+              function(event){
+                  if(event !== undefined)
+                      console.log(event);
+                  else
+                      console.log("Started listening to jack events")},
               function(error){console.log(error)});
     ```
     
 * **stopListening**(success: function, error: function)
     * This method removes the broadcast receiver that was set using **startListening**
     ```javascript
-        cordova.plugins.Jack35Plugin.stopListening(function(){console.log("Volume changed")},function(error){console.log(error)});
+        cordova.plugins.Jack35Plugin.stopListening(function(){console.log("Stopped listening to jack events")},function(error){console.log(error)});
     ```
 
 
