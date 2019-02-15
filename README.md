@@ -1,7 +1,7 @@
 # Jack35Plugin 
 Sample Cordova plugin to demonstrate Integration with Outsystems platform.
 
-This plugin can be used to control the device volume(for any [stream](#Android-Audio-Streams)).
+This plugin can be used to listen to plugging or unplugging of jack 3.5 connection (ex.: headphones) and control the device volume (for any [stream](#Android-Audio-Streams)).
 
 ## Dependencies
 To start creating native Plugins for Cordova to integrate with the Outsystems platforms, a few things are needed in advance:
