@@ -1,5 +1,7 @@
-# Jack35Plugin
-Sample Cordova plugin to demonstrate Integration with Outsystems platform
+# Jack35Plugin 
+Sample Cordova plugin to demonstrate Integration with Outsystems platform.
+
+This plugin can be used to control the device volume(for any [stream](#Android-Audio-Streams)).
 
 ## Dependencies
 To start creating native Plugins for Cordova to integrate with the Outsystems platforms, a few things are needed in advance:
@@ -9,6 +11,8 @@ To start creating native Plugins for Cordova to integrate with the Outsystems pl
 1. [Android Studio](https://developer.android.com/studio/) - for android plugin development
 1. [XCode](https://developer.apple.com/xcode/) - for iOS plugin development
 
+## [Plugin API](API.md)
+For a detailed api for the plugin, check the [api page](API.md);
 
 ## Plugin Creation
 In here we will demonstrate a sample usage for creating an android plugin.
