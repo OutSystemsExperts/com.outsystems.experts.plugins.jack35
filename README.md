@@ -1,13 +1,13 @@
 
 This repository serves to illustrate an outcome of following the tutorials/documentation about creating native plugins for the OS platform.
-You can check these blog posts:
+Follow a tech talk with a live demonstration of creating a plugin at:
+1. [Creating and Using OutSystems Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=j0UURdj3zB4)
+2. [Step Up Your Game With Native Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=pNVIKibSOEU)
+
+You can also read these blogposts/documentation:
 * [How to create a cordova plugin from scratch](https://www.outsystems.com/blog/posts/how-to-create-a-cordova-plugin-from-scratch/)
 * [Using Cordova Plugins](https://success.outsystems.com/Documentation/10/Extensibility_and_Integration/Mobile_Plugins/Using_Cordova_Plugins)
 * [How MABS work](https://www.outsystems.com/blog/posts/how-mobile-apps-build-service-works)
-
-and/or follow a tech talk with a live demonstration of creating a plugin at:
-1. [Creating and Using OutSystems Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=j0UURdj3zB4)
-2. [Step Up Your Game With Native Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=pNVIKibSOEU)
 
 
 # Jack35Plugin 
