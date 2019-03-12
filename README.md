@@ -1,6 +1,16 @@
-# Jack35Plugin 
-Sample Cordova plugin to demonstrate Integration with Outsystems platform.
 
+This repository serves to illustrate an outcome of following the tutorials/documentation about creating native plugins for the OS platform.
+Follow a tech talk with a live demonstration of creating a plugin at:
+1. [Creating and Using OutSystems Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=j0UURdj3zB4)
+2. [Step Up Your Game With Native Plugins - Mobile - ODC 2018](https://www.youtube.com/watch?v=pNVIKibSOEU)
+
+You can also read these blogposts/documentation:
+* [How to create a cordova plugin from scratch](https://www.outsystems.com/blog/posts/how-to-create-a-cordova-plugin-from-scratch/)
+* [Using Cordova Plugins](https://success.outsystems.com/Documentation/10/Extensibility_and_Integration/Mobile_Plugins/Using_Cordova_Plugins)
+* [How MABS work](https://www.outsystems.com/blog/posts/how-mobile-apps-build-service-works)
+
+
+# Jack35Plugin 
 This plugin can be used to listen to plugging or unplugging of jack 3.5 connection (ex.: headphones) and control the device volume (for any [stream](#Android-Audio-Streams)).
 
 ## Dependencies
@@ -8,11 +18,10 @@ To start creating native Plugins for Cordova to integrate with the Outsystems pl
 1. [NodeJs](https://nodejs.org/en/)
 1. [Cordova](https://cordova.apache.org/#getstarted) @ **7.1.0**
 1. [Plugman](https://cordova.apache.org/docs/en/latest/plugin_ref/plugman.html)
-1. [Android Studio](https://developer.android.com/studio/) - for android plugin development
+1. [Android Studio (AS)](https://developer.android.com/studio/) - for android plugin development
+	* you will need the [Java Development Kit](https://openjdk.java.net/install/) installed to run the cordova build comands for the android platform. The AS bundle already brings an embed jdk, you should either install a new jdk or add the AS embed jdk path to your own path. 
 1. [XCode](https://developer.apple.com/xcode/) - for iOS plugin development
-
-## [Plugin API](API.md)
-For a detailed api for the plugin, check the [api page](API.md);
+1. Git (Optional) - if you want to share your plugin to the outsystems platform using the extensibility configuration with a link.
 
 ## Plugin Creation
 In here we will demonstrate a sample usage for creating an android plugin.
@@ -61,9 +70,21 @@ You can also test your application imediatly, having a device or android emulato
 
 ```cordova run android ```
 
-#### iOS
+## iOS
 
 Similarly, if you are developing an ios plugin and ios application, everything above applies, replacing the **_android_** keyword by _**ios**_.
  
  The version for cordova-ios platform should be 4.5.5. You should open the **.xcworkspace** file (inside the created app, in ```platforms/ios```) with the Xcode app to see the application code.
+
+
+## [Jack35 Plugin API](API.md)
+For a detailed api for the plugin, check the [api page](API.md);
+
+## Outsystems Platform
+In the [osPlatform](osPlatform) folder you can find the .oap file containing the OS plugin and a sample application to use the plugin.
+
+To know more about how you can configure the `Extensibilities Configurations` see the [OS oficial documentation](https://success.outsystems.com/Documentation/10/Extensibility_and_Integration/Mobile_Plugins/Using_Cordova_Plugins)
+
+**Notes**
+1. When adding a .zip file to the extensibilities, the zip file size is limited to 20 MB size
 
