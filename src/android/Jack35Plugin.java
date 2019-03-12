@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -24,15 +25,24 @@ public class Jack35Plugin extends CordovaPlugin {
     private static final String TAG = "Jack35Plugin";
     private final String INVALID_ARGS_ERROR = "Invalid arguments -> ";
     private final String INVALID_ACTION_ERROR = "Invalid action";
+
+    //PREFERENCES KEYS
+    private final String ICON_RES_NAME = "ICON_RES_NAME";
+    private final String NOTIFICATION_TITLE = "NOTIFICATION_TITLE";
+    private final String NOTIFICATION_MESSAGE = "NOTIFICATION_MESSAGE";
+    //PREFERENCES DEFAULT VALUES KEYS
+    private final String ICON_RES_NAME_DEFVAL = "jack35Icon";
+    private final String NOTIFICATION_TITLE_DEFVAL = "Audio Warning";
+    private final String NOTIFICATION_MESSAGE_DEFVAL = "Jack was unplugged!";
+
     private JackIntentReceiver jackIntentReceiver;
 
-    public static Notification createNotification(Context context, String title, String text, int priority) {
+    public Notification createNotification(String title, String text, int priority) {
+        Context context = cordova.getActivity();
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "0")
-                .setSmallIcon(android.R.drawable.ic_lock_silent_mode)
+                .setSmallIcon(getImageId(context.getResources(), preferences.getString(ICON_RES_NAME, ICON_RES_NAME_DEFVAL), context.getPackageName()))
                 .setContentTitle(title)
                 .setContentText(text)
-                /* .setStyle(new NotificationCompat.BigTextStyle()
-                         .bigText("Much longer text that cannot fit one line..."))*/
                 .setPriority(priority);
         return mBuilder.build();
     }
@@ -66,8 +76,8 @@ public class Jack35Plugin extends CordovaPlugin {
 
                         boolean triggerNot = args.getBoolean(0);
                         jackIntentReceiver = new JackIntentReceiver(callbackContext,
-                                triggerNot ? "Audio Warning" : "",
-                                triggerNot ? "Jack3.5 connector was unplugged!" : "",
+                                triggerNot ? preferences.getString(NOTIFICATION_TITLE, NOTIFICATION_TITLE_DEFVAL) : "",
+                                triggerNot ? preferences.getString(NOTIFICATION_MESSAGE, NOTIFICATION_MESSAGE_DEFVAL) : "",
                                 Notification.PRIORITY_MAX);
                         cordova.getActivity().registerReceiver(jackIntentReceiver, new IntentFilter(Intent.ACTION_HEADSET_PLUG));
                         PluginResult pr = new PluginResult(PluginResult.Status.NO_RESULT);
@@ -189,7 +199,7 @@ public class Jack35Plugin extends CordovaPlugin {
                     case 0:
                         Log.d(TAG, "Headset is unplugged");
                         if (!title.isEmpty()) {
-                            notificationManager.notify(0, createNotification(context, title, text, priority));
+                            notificationManager.notify(0, createNotification(title, text, priority));
                         }
                         pr = new PluginResult(PluginResult.Status.OK, "unplugged");
                         pr.setKeepCallback(true);
@@ -208,5 +218,13 @@ public class Jack35Plugin extends CordovaPlugin {
             }
         }
 
+    }
+
+    private static int getImageId(Resources resources, String icon, String packageName) {
+        int iconId = resources.getIdentifier(icon, "drawable", packageName);
+        if (iconId == 0) { //if icon not found, use default image
+            iconId = android.R.drawable.ic_lock_silent_mode;
+        }
+        return iconId;
     }
 }

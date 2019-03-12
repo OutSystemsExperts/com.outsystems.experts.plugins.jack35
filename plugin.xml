@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin id="com.outsystems.experts.plugins.jack35" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="com.outsystems.experts.plugins.jack35" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>Jack35Plugin</name>
     <js-module name="Jack35Plugin" src="www/Jack35Plugin.js">
-        <clobbers target="cordova.plugins.Jack35Plugin" />
+        <clobbers target="cordova.plugins.Jack35Plugin"/>
     </js-module>
+    <!-- add to config.xml if you want to configure these properties
+        <preference name="ICON_RES_NAME" default="jack35Icon"/>
+        <preference name="NOTIFICATION_TITLE" default="Audio Warning"/>
+        <preference name="NOTIFICATION_MESSAGE" default="Jack was unplugged!"/>
+    -->
     <platform name="android">
-        <framework src= "com.android.support:support-v4:26.1.0"/>
+        <hook type="before_prepare" src="hooks/copy_resources_files.js"/>
+
+        <!--Dependency on Notification Manager compat-->
+        <framework src="com.android.support:support-v4:26.1.0"/>
+
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="Jack35Plugin">
-                <param name="android-package" value="com.outsystems.experts.plugins.jack35.Jack35Plugin" />
+                <param name="android-package" value="com.outsystems.experts.plugins.jack35.Jack35Plugin"/>
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/Jack35Plugin.java" target-dir="src/com/outsystems/experts/plugins/jack35/Jack35Plugin" />
+        <source-file src="src/android/Jack35Plugin.java"
+                     target-dir="src/com/outsystems/experts/plugins/jack35"/>
     </platform>
 </plugin>
