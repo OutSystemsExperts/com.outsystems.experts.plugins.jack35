@@ -3,6 +3,43 @@ Sample Cordova plugin to demonstrate Integration with Outsystems platform.
 
 This plugin can be used to listen to plugging or unplugging of jack 3.5 connection (ex.: headphones) and control the device volume (for any [stream](#Android-Audio-Streams)).
 
+## CONFIGURATIONS
+The Notification that is triggered when the jack is disconnected can be customized.
+
+### Notification Body and Title
+The **body** and **title** of the notification are customizable through the use of preferences in the config.xml file of the cordova application (either globaly or for each platform separately).
+
+Example:
+```xml
+<preference name="NOTIFICATION_TITLE" value="Notification custom Title" /> <!-- defaultValue = "Audio Warning"-->
+<preference name="NOTIFICATION_MESSAGE" value="This will be the new message for the notification" /> <!-- defaultValue = "Jack was unplugged!"-->
+```
+Using the OS platform it can be configured using the extensibilities in the application using the plugin:
+```json
+{
+  "preferences": {
+    "global": [
+      {
+        "name": "NOTIFICATION_TITLE",
+        "value": "Notification custom Title"
+      },
+      {
+        "name": "NOTIFICATION_MESSAGE",
+        "value": "This will be the new message for the notification"
+      }
+    ]
+}
+```
+### Notification Icon
+The **icon** of the notification is customizable through the usage of a resource file, that should be placed under the cordova app folder `/platforms/android/assets/www/jack35PluginResources`.
+By default the icon should have the name `jack35Icon`, but this can be changed through the usage of the preference:
+
+Example:
+```xml
+<preference name="NOTIFICATION_ICON" value="newIconName" /> <!-- defaultValue = "jack35Icon"-->
+```
+Using the OS platform it can be configured adding the preference with the new name to the extensibilities AND by adding a an image resource and deploying it to the folder `jack35PluginResources`
+
 ## API
 
 Methods:
